@@ -333,9 +333,9 @@ public class GithubSecurityRealm extends SecurityRealm {
         if (!scopes.isEmpty()) {
             suffix = "&scope="+Util.join(scopes,",");
         } else {
-            // We need repo scope in order to access private repos
+            // We're only checking org membership at Monetate
             // See https://developer.github.com/v3/oauth/#scopes
-            suffix = "&scope=repo,read:org";
+            suffix = "&scope=read:org";
         }
 
 		return new HttpRedirect(githubWebUri + "/login/oauth/authorize?client_id="
